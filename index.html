@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Current Location | JavaScript</title>
+</head>
+
+<body>
+
+    <h1>Current Location</h1>
+    
+    <label for="latitude">Latitude:</label>
+    <input type="text" id="latitude" readonly>
+
+    <label for="longitude">Longitude:</label>
+    <input type="text" id="longitude" readonly>
+
+    <button onclick="getLocation()">Get Location</button>
+
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            const latitudeInput = document.getElementById("latitude");
+            const longitudeInput = document.getElementById("longitude");
+
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            latitudeInput.value = latitude;
+            longitudeInput.value = longitude;
+        }
+
+        // Call the getLocation function when the page is loaded
+        
+        // window.onload = getLocation;
+    </script>
+
+</body>
+
+</html>
